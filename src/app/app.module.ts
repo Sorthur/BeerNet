@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { CookieService } from 'ngx-cookie-service';
 import { UserAccountComponent } from './user-account/user-account.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavigationBarComponent,
-        UserAccountComponent
+        UserAccountComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
