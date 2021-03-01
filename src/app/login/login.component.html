@@ -1,1 +1,11 @@
-<p>login works!</p>
+<div class="pt-5">
+    <h1>Login</h1>
+
+    <form [formGroup]="loginForm" (ngSubmit)="Login()">
+        <label class="text-danger pl-1">{{errorLabel}}</label>
+        <input type="text" class="form-control col-md-3 " id="login" formControlName="login" placeholder="login"><br>
+        <input type="password" class="form-control col-md-3" id="password" formControlName="password"
+            placeholder="password"><br>
+        <input type="submit" class="btn btn-primary" value="Login">
+    </form>
+</div>
