@@ -1,0 +1,18 @@
+.navbar-beernet {
+  background-color: #14213D;
+  color: #E5E5E5 !important;
+}
+
+.navbar-brand {
+  color: #FCA311 !important;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #E5E5E5 !important;
+}
+
+.btn-outline-beernet {
+  color: #E5E5E5;
+  border-color: #E5E5E5;
+}

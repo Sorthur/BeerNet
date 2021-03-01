@@ -1,1 +1,33 @@
-<p>navigation-bar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light navbar-beernet">
+    <a class="navbar-brand" routerLink="">BeerNet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/search/beer">Beers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/search">Breweries</a>
+            </li>
+            <li>
+                <form class="form-inline my-2 my-lg-0 pl-4">
+                    <input class="form-control mr-sm-2" routerLink="/search/" type="search" placeholder="Search"
+                        aria-label="Search">
+                </form>
+            </li>
+        </ul>
+        <div *ngIf="IsLogged(); then loggedBlock else LogoutBlock"></div>
+        <ng-template #loggedBlock>
+            <a class="nav-link" routerLink="/myprofile" routerLinkActive="active">My Profile</a>
+            <a class="nav-link" (click)="Logout()" routerLink="/" routerLinkActive="active">Logout</a>
+        </ng-template>
+        <ng-template #LogoutBlock>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+            <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </ng-template>
+    </div>
+</nav>
