@@ -10,13 +10,15 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { CookieService } from 'ngx-cookie-service';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { LoginComponent } from './login/login.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavigationBarComponent,
         UserAccountComponent,
-        LoginComponent
+        LoginComponent,
+        SearchComponent
     ],
     imports: [
         BrowserModule,
