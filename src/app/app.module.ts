@@ -19,7 +19,9 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
         HttpClientModule,
         ReactiveFormsModule,
     ],
-    providers: [],
+    providers: [
+        CookieService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
