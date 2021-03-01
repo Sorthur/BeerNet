@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
+import { SearchBeerComponent } from './search-beer/search-beer.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { SearchComponent } from './search/search.component';
         NavigationBarComponent,
         UserAccountComponent,
         LoginComponent,
-        SearchComponent
+        SearchComponent,
+        SearchBeerComponent
     ],
     imports: [
         BrowserModule,
