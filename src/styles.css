@@ -1,2 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+/*
+#000000
+#14213D
+#FCA311
+#E5E5E5
+#FFFFFF
+bd~75%
+ */
+
+body {
+  background-color: #E5E5E5;
+}
+
+/* bootstrap overriding */
+.btn-primary {
+  color: #ffffff;
+  background-color: #14213D;
+  border-color: #14213D;
+}
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: #093286;
+  border-color: #093286;
+}
+
+.tab-primary {
+  color: #ffffff;
+  background-color: #14213D;
+  border-color: #14213D;
+}
+
+.tab-primary:hover {
+  color: #ffffff;
+  background-color: #fca211bd;
+  border-color: #14213D;
+}
+
+.activeTab {
+  background-color: #FCA311;
+  color: #14213D;
+  font-weight: bold;
+}
+
+.list-group-item-rating {
+  background-color: #E5E5E5;
+  border: 0;
+}
+
+.bn-image {
+  display: block;
+  margin: auto;
+  max-height: 20em;
+  max-width: 12em;
+}
+
+.link {}
+
+.link:hover {}
+
+.eldor {
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  border-radius: 10px;
+  background-color: #FCA311;
+  height: 5px;
+}
+
+.eldor::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  top: 0px;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.6);
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+  background-color: #14213D;
+}
