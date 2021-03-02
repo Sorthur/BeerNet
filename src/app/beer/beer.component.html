@@ -1,1 +1,88 @@
-<p>beer works!</p>
+<div *ngIf="isBeerLoaded else stillLoading" class="mt-4 inline-block row">
+    <div class="col-md-2">
+        <img class="bn-image rounded pb-3" src="">
+    </div>
+
+    <div class="col-md-10">
+        <div class="p-3 p-md-0 pr-md-3 pl-md-3">
+            <span class="h1 row">
+                {{beer.name}}
+            </span>
+            <span class="row">
+                <a routerLink="/brewery/{{beer.brewery.id}}" class="h5">
+                    {{beer.brewery.name}}
+                </a>
+                <span class="ml-1">
+                    - {{countryEnum[beer.brewery.country]}}
+                </span>
+            </span>
+
+            <span class="row">
+                Style: {{beerStyleEnum[beer.style].replace('_',' ')}}
+            </span>
+            <span class="row">
+                Exctract: {{beer.extract}}°
+            </span>
+            <span class="row">
+                Abv: {{beer.abv}}%
+            </span>
+            <span class="row">
+                Average rating: {{beer.averageRating.toPrecision(3)}}
+            </span>
+            <div class="mt-3 font-italic text-justify row">
+                {{beer.description}}
+            </div>
+            <hr>
+        </div>
+
+        <div class="row-cols-1">
+            <form class="form-group">
+                <label class="font-italic font-weight-bold">Rate this beer! <b>ToDo: ONLY FOR LOGGED
+                        USERS</b></label><br>
+                <div class="row mb-1">
+                    <div class="col-1">
+                        {{rateValue}}
+                    </div>
+                    <div class="col-10">
+                        <input [formControl]="beerRateRange" (input)="updateRangeValue()" type="range" class="eldor"
+                            step="0.1" min="0" max="5">
+                    </div>
+                </div>
+                <textarea class="form-control right" rows="4" placeholder="Description" #descriptionTextarea></textarea>
+                <div class="text-center p-2">
+                    <a (click)="rateBeer(descriptionTextarea.value, beerRateRange.value)" class="btn btn-primary">
+                        Rate
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <ul class="list-group col">
+                <li class="list-group-item list-group-item-rating pb-0"
+                    *ngFor="let beerRate of beer.beerRates.reverse()">
+                    <div class="row">
+                        <div class="col-2 col-md-1 mr-md-2 modal-dialog-centered">
+                            <h2>{{beerRate.rate}}</h2>
+                        </div>
+                        <div class="col-10 col-md-10">
+                            <a routerLink="/myprofile" class="h5">
+                                UserName
+                            </a>
+                            <span class="font-weight-lighter small">
+                                Data
+                            </span>
+                            <hr class="m-0">
+                            {{beerRate.description}}
+                        </div>
+                    </div>
+                    <hr class="pb-1">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ng-template #stillLoading>
+    <p>Loading...</p>
+</ng-template>
