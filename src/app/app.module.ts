@@ -12,6 +12,7 @@ import { UserAccountComponent } from './user-account/user-account.component';
 import { LoginComponent } from './login/login.component';
 import { SearchComponent } from './search/search.component';
 import { SearchBeerComponent } from './search-beer/search-beer.component';
+import { BeerComponent } from './beer/beer.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { SearchBeerComponent } from './search-beer/search-beer.component';
         UserAccountComponent,
         LoginComponent,
         SearchComponent,
-        SearchBeerComponent
+        SearchBeerComponent,
+        BeerComponent
     ],
     imports: [
         BrowserModule,
