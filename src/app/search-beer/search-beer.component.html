@@ -26,7 +26,7 @@
 
 <div class="list-group">
     <a class="list-group-item list-group-item-action" *ngFor=" let beer of beerModels; let i=index"
-        [routerLink]="['/beer/{{beer.id}}']">
+        [routerLink]="['/beer/', beer.id]">
         <span class="h5">{{beer.name}}</span><br>
         <a class="" routerLink="/myprofile">Browar</a>
     </a>
