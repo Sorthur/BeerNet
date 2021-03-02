@@ -1,1 +1,33 @@
-<p>search-beer works!</p>
+<form [formGroup]="searchBeerForm">
+    <div class="form-group row">
+        <input formControlName="beerName" type="text" placeholder="Beer name" class="form-control col m-1">
+        <select formControlName="beerStyle" class="form-control col m-1">
+            <option value='' disabled selected>Beer Style</option>
+            <option *ngFor="let style of beerStyleKeys" [value]="style"> {{style}} </option>
+        </select>
+        <input formControlName="extractFrom" type="number" min="0" max="100" placeholder="Extract min"
+            class="form-control col-md-2 m-1">
+        <input formControlName="abvFrom" type="number" min="0" max="100" placeholder="Alcohol min"
+            class="form-control col-md-2 m-1">
+    </div>
+    <div class="form-group row">
+        <input formControlName="breweryName" type="text" placeholder="Brewery name" class="form-control col m-1">
+        <select formControlName="country" class="form-control col m-1">
+            <option value='' disabled selected>Country</option>
+            <option *ngFor="let country of countryKeys" [value]="country"> {{country}} </option>
+        </select>
+        <input formControlName="extractTo" type="number" min="0" max="100" placeholder="Extract max"
+            class="form-control col-md-2 m-1">
+        <input formControlName="abvTo" type="number" min="0" max="100" placeholder="Alcohol max"
+            class="form-control col-md-2 m-1">
+    </div>
+    <button (click)="searchBeers()" type="button" class="btn btn-primary">hidden submit</button>
+</form>
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action" *ngFor=" let beer of beerModels; let i=index"
+        [routerLink]="['/beer/{{beer.id}}']">
+        <span class="h5">{{beer.name}}</span><br>
+        <a class="" routerLink="/myprofile">Browar</a>
+    </a>
+</div>
