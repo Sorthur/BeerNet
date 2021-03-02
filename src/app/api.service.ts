@@ -6,6 +6,7 @@ import { BeerFilter } from './models/filters/beerFilter';
 import { BeerModel } from './models/beerModel';
 import { BeerRateModel } from './models/beerRateModel';
 import { BreweryModel } from './models/breweryModel';
+import { BreweryFilter } from './models/filters/breweryFilter';
 
 @Injectable({
     providedIn: 'root'
@@ -27,7 +28,7 @@ export class ApiService {
     // ******************************************** Beers ********************************************
 
     public async getBeers(beerFilter: BeerFilter, limit: number = 10, offset: number = 0): Promise<BeerModel[]> {
-        var httpParams = new HttpParams()
+        let httpParams = new HttpParams()
             .set("Limit", limit.toString())
             .set("offset", offset.toString());
 
@@ -58,6 +59,25 @@ export class ApiService {
 
     public async getBrewery(breweryId: number): Promise<BreweryModel> {
         return await this.httpClient.get<BreweryModel>(this.breweryUrl + breweryId)
+            .toPromise();
+    }
+
+    public async getBreweries(breweryFilter: BreweryFilter, limit: number = 10, offset: number = 0): Promise<BreweryModel[]> {
+        let httpParams = new HttpParams()
+            .set("Limit", limit.toString())
+            .set("offset", offset.toString());
+
+        let i: number = 0
+
+        for (let prop in breweryFilter) {
+            if (Object.prototype.hasOwnProperty.call(breweryFilter, prop)) {
+                if (Object.values(breweryFilter)[i] != null) {
+                    httpParams = httpParams.set(prop, Object.values(breweryFilter)[i]);
+                }
+                i++;
+            }
+        }
+        return await this.httpClient.get<BreweryModel[]>(this.breweryUrl, { params: httpParams })
             .toPromise();
     }
 }
