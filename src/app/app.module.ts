@@ -14,6 +14,7 @@ import { SearchComponent } from './search/search.component';
 import { SearchBeerComponent } from './search-beer/search-beer.component';
 import { BeerComponent } from './beer/beer.component';
 import { BreweryComponent } from './brewery/brewery.component';
+import { SearchBreweryComponent } from './search-brewery/search-brewery.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { BreweryComponent } from './brewery/brewery.component';
         SearchComponent,
         SearchBeerComponent,
         BeerComponent,
-        BreweryComponent
+        BreweryComponent,
+        SearchBreweryComponent
     ],
     imports: [
         BrowserModule,
