@@ -25,7 +25,8 @@
 <div class="list-group mt-3">
     <a class="list-group-item list-group-item-action" *ngFor=" let beer of beerModels; let i=index"
         [routerLink]="['/beer/', beer.id]">
-        <span class="h5">{{beer.name}}</span><br>
+        <span class="h5">{{beer.name}} </span>
+        <span class="small">{{beerStyleEnum[beer.style]}}</span><br>
         <a class="" routerLink="/myprofile">Browar</a>
     </a>
 </div>
