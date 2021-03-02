@@ -26,8 +26,20 @@ export class ApiService {
 
     // ******************************************** Beers ********************************************
 
-    public async getBeers(beerFilter: BeerFilter): Promise<BeerModel[]> {
-        let httpParams = new HttpParams().set("Limit", "2");
+    public async getBeers(beerFilter: BeerFilter, limit: number = 10, offset: number = 0): Promise<BeerModel[]> {
+        var httpParams = new HttpParams()
+            .set("Limit", limit.toString())
+            .set("offset", offset.toString());
+
+        let i: number = 0;
+        for (let prop in beerFilter) {
+            if (Object.prototype.hasOwnProperty.call(beerFilter, prop)) {
+                if (Object.values(beerFilter)[i] != null) {
+                    httpParams = httpParams.set(prop, Object.values(beerFilter)[i]);
+                }
+                i++;
+            }
+        }
         return await this.httpClient.get<BeerModel[]>(this.beersUrl, { params: httpParams })
             .toPromise();
     }
