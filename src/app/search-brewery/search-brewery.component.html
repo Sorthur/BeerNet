@@ -1,1 +1,25 @@
-<p>search-brewery works!</p>
+<form [formGroup]="searchBreweryForm">
+    <div class="form-group">
+        <div class="row">
+            <input formControlName="breweryName" type="text" placeholder="Brewery name"
+                class="form-control col-md-4 m-1">
+        </div>
+
+        <div class="row">
+            <select formControlName="country" class="form-control  col-md-4 m-1">
+                <option value='' disabled selected>Country</option>
+                <option *ngFor="let country of countryKeys" [value]="country"> {{country}} </option>
+            </select>
+        </div>
+    </div>
+    <button (click)="searchBreweries()" type="button" class="btn btn-primary">Search</button>
+</form>
+
+<div class="list-group mt-3">
+    <a class="list-group-item list-group-item-action" *ngFor=" let brewery of breweryModels; let i=index"
+        [routerLink]="['/brewery/', brewery.id]">
+        <span class="h5">{{brewery.name}} </span>
+        <span class="small">{{countryEnum[brewery.country]}}</span><br>
+        <span class="">{{brewery.description.slice(0,99)}}...</span>
+    </a>
+</div>
