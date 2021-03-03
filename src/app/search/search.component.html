@@ -1,10 +1,9 @@
 <div class="mt-4">
-    <button (click)="activeTab=0" [ngClass]="activeTab == 0 ? 'activeTab' : ''" class="btn tab-primary"
+    <button [ngClass]="activeTab == 0 ? 'activeTab' : ''" class="btn tab-primary"
         routerLink="/search/beer">Beers</button>
-    <button (click)="activeTab=1" [ngClass]="activeTab == 1 ? 'activeTab' : ''" class="btn tab-primary"
+    <button [ngClass]="activeTab == 1 ? 'activeTab' : ''" class="btn tab-primary"
         routerLink="/search/brewery">Breweries</button>
-    <button (click)="activeTab=2" [ngClass]="activeTab == 2 ? 'activeTab' : ''" class="btn tab-primary"
-        routerLink="/search">People</button>
+    <button [ngClass]="activeTab == 2 ? 'activeTab' : ''" class="btn tab-primary" routerLink="/search">People</button>
 </div>
 
 <router-outlet></router-outlet>
