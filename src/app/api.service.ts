@@ -7,12 +7,14 @@ import { BeerModel } from './models/beerModel';
 import { BeerRateModel } from './models/beerRateModel';
 import { BreweryModel } from './models/breweryModel';
 import { BreweryFilter } from './models/filters/breweryFilter';
+import { RegisterModel } from './models/registerModel';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
     private loginUrl: string = 'https://beernetapi.azurewebsites.net/api/authenticate/login/';
+    private registerUrl: string = 'https://beernetapi.azurewebsites.net/api/authenticate/register/';
     private beersUrl: string = 'https://beernetapi.azurewebsites.net/api/beers/';
     private beerRatesUrl: string = 'https://beernetapi.azurewebsites.net/api/beers/rate/';
     private breweryUrl: string = 'https://beernetapi.azurewebsites.net/api/breweries/';
@@ -22,6 +24,11 @@ export class ApiService {
     // ******************************************** Authentication ********************************************
     public async getToken(loginModel: LoginModel) {
         return await this.httpClient.post<LoginResponseModel>(this.loginUrl, loginModel)
+            .toPromise();
+    }
+
+    public async registerUser(registerModel: RegisterModel) {
+        return await this.httpClient.post<RegisterModel>(this.registerUrl, registerModel)
             .toPromise();
     }
 
