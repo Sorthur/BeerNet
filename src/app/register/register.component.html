@@ -1,1 +1,12 @@
-<p>register works!</p>
+<div class="pt-5">
+    <h1>Register</h1>
+
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <label class="text-danger pl-1">{{errorLabel}}</label>
+        <input type="text" class="form-control col-md-3 " id="login" formControlName="login" placeholder="login"><br>
+        <input type="email" class="form-control col-md-3 " id="email" formControlName="email" placeholder="email"><br>
+        <input type="password" class="form-control col-md-3" id="password" formControlName="password"
+            placeholder="password"><br>
+        <input type="submit" class="btn btn-primary" value="Register">
+    </form>
+</div>
