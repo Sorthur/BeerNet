@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppSettings } from 'src/AppSettings';
 import { ApiService } from '../api.service';
 import { RegisterModel } from '../models/registerModel';
+import { ValidationPassword } from '../validation/validationPassword';
 
 @Component({
     selector: 'app-register',
@@ -30,7 +31,9 @@ export class RegisterComponent implements OnInit {
             this.errorLabel = 'Incorrect e-mail';
             return;
         }
-        if (!this.checkIfPasswordIsCorrect(this.registerForm.value.password)) {
+        let passwordErrorMessage = ValidationPassword.checkIfPasswordIsCorrect(this.registerForm.value.password);
+        if (passwordErrorMessage !== null) {
+            this.errorLabel = passwordErrorMessage;
             return;
         }
         try {
@@ -49,31 +52,6 @@ export class RegisterComponent implements OnInit {
         }
         window.alert("User registered successfully")
         this.router.navigate(['/']);
-    }
-
-    checkIfPasswordIsCorrect(password: string): boolean {
-        this.errorLabel = "";
-        if (password.length < 6) {
-            this.errorLabel = 'Passwords must be at least 6 characters';
-            return false;
-        }
-        else if (password.match("^((?![a-z]).)*$")) {
-            this.errorLabel = "Passwords must have at least one lowercase ('a'-'z')";
-            return false;
-        }
-        else if (password.match("^((?![A-Z]).)*$")) {
-            this.errorLabel = "Passwords must have at least one uppercase ('A'-'Z')";
-            return false;
-        }
-        else if (password.match("^((?![0-9]).)*$")) {
-            this.errorLabel = "Passwords must have at least one digit ('0'-'9')";
-            return false;
-        }
-        else if (password.match(`^[^<>?:"{}|~!@#$%^&*()_+\`\\-=[\\]\;',.\\/]+$`)) {
-            this.errorLabel = 'Passwords must have at least one non alphanumeric character';
-            return false;
-        }
-        return true;
     }
 
     ngOnInit(): void { }
