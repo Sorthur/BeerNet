@@ -12,6 +12,7 @@ import { BeerFilter } from '../models/filters/beerFilter';
     styleUrls: ['./search-beer.component.css']
 })
 export class SearchBeerComponent implements OnInit {
+    isApiCallAwaited: boolean = false;
     declare beerModels: BeerModel[];
     beerStyleEnum = BeerStyle;
     countryEnum = Country;
@@ -37,7 +38,7 @@ export class SearchBeerComponent implements OnInit {
 
 
     async searchBeers() {
-        console.log("start: " + this.searchBeerForm.value.beerName);
+        this.isApiCallAwaited = true;
         try {
             await this.api.getBeers(new BeerFilter(
                 this.searchBeerForm.value.beerName,
@@ -56,7 +57,9 @@ export class SearchBeerComponent implements OnInit {
             console.log(error)
             return;
         }
-        console.log(this.beerModels); // We got beers array - brewery info included
+        finally {
+            this.isApiCallAwaited = false;
+        }
     }
 
     ngOnInit(): void { }

@@ -11,6 +11,7 @@ import { BreweryFilter } from '../models/filters/breweryFilter';
     styleUrls: ['./search-brewery.component.css']
 })
 export class SearchBreweryComponent implements OnInit {
+    isApiCallAwaited: boolean = false;
     declare breweryModels: BreweryModel[];
     countryEnum = Country;
     countryKeys: any[];
@@ -26,6 +27,7 @@ export class SearchBreweryComponent implements OnInit {
     });
 
     async searchBreweries() {
+        this.isApiCallAwaited = true;
         try {
             await this.api.getBreweries(new BreweryFilter(
                 this.searchBreweryForm.value.breweryName,
@@ -37,6 +39,9 @@ export class SearchBreweryComponent implements OnInit {
         catch (error) {
             console.log(error);
             return;
+        }
+        finally {
+            this.isApiCallAwaited = false;
         }
     }
 

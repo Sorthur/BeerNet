@@ -22,6 +22,12 @@
     <button (click)="searchBeers()" type="button" class="btn btn-primary">Search</button>
 </form>
 
+<div *ngIf="isApiCallAwaited" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
 <div class="list-group mt-3">
     <a class="list-group-item list-group-item-action" *ngFor=" let beer of beerModels; let i=index"
         [routerLink]="['/beer/', beer.id]">
